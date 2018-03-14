@@ -1,18 +1,18 @@
 package restaurant;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Order {
-    private ArrayList<String> orderList;
+    private List<String> orderList;
 
     public Order(ArrayList<String> menu, int... menuIndex) {
-        orderList = new ArrayList<>(menuIndex.length);
-        for (int index : menuIndex) {
-            orderList.add(menu.get(index));
-        }
+        orderList = Arrays.stream(menuIndex).mapToObj(menu::get).collect(Collectors.toList());
     }
 
-    public ArrayList<String> getOrderList() {
+    public List<String> getOrderList() {
         return orderList;
     }
 }
